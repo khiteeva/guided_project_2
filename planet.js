@@ -35,13 +35,25 @@ async function getPlanet(id) {
         console.error(`Error reading planet ${id} data.`, ex.message);
     }
     renderPlanet(planet);
-
 }
 
 async function fetchPlanet(id) {
-    let planetURL = `${baseUrl}/planets/${id}`;
-    return await fetch(planetURL)
-        .then(res => res.json())
+    const storageItem = localStorage.getItem(id.toString());
+
+    if(storageItem) {
+        return JSON.parse(storageItem);
+    } else {
+        let planetURL = `${baseUrl}/planets/${id}`;
+        
+        try {
+            const planetResp = await fetch(planetURL);
+            const planet = await planetResp.json();
+            localStorage.setItem(id.toString(), JSON.stringify(planet))
+            return planet;
+        } catch(e) {
+            throw new Error(e)
+        }
+    }
 }
 
 const renderPlanet = planet => {
