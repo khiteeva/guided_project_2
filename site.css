@@ -88,6 +88,13 @@ h1#name {
   background-color: var(--light2);
 }
 
+section#planet_view li {
+  padding: 20px;
+  margin: 0px;
+  color: var(--dark2);
+  background-color: var(--light2);
+}
+
 #generalInfo span {
   font-weight: bold;
   font-size: 1.1em;
@@ -95,12 +102,14 @@ h1#name {
 
 section#planets,
 section#characters,
+section#planet_view,
 section#films {
   margin: 50px;
 }
 
 section#planets ul,
 section#characters ul,
+section#planet_view ul,
 section#films ul {
   list-style-type: none;
   padding: 0;
