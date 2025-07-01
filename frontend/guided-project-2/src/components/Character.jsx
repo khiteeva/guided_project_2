@@ -72,7 +72,7 @@ function Character(){
                 <h2>Films appeared in</h2>
                 <ul>
                     {FilmsList.map((film) =>(
-                        <li key={film.id}><a href={`/film/${film.id}`}>{film.title}</a></li>
+                        <li key={film.id}><a href={`/films/${film.id}`}>{film.title}</a></li>
                     ))}
                 </ul>
             </section>
