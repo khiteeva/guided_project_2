@@ -192,7 +192,7 @@ app.get('/api/planets/:id/films', async (req, res) => {
         let films_array = [];
         for(let element in film_ids){
             let film_info = await film_collection.find({id : parseInt(film_ids[element].film_id)}).toArray();
-            films_array = [...films_array, film_info];
+            films_array = [...films_array, film_info[0]];
         }
         res.json(films_array);
     } catch (err) {
