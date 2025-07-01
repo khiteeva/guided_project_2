@@ -143,6 +143,20 @@ app.get('/api/films/:id/planets', async (req, res) => {
     }
 });
 
+app.get('/api/characters/:id/planet', async (req, res) => {
+    const id = parseInt(req.params.id);
+    try {
+        const client = await MongoClient.connect(url);
+        const db = client.db(dbName);
+        const collection = db.collection(characters);
+        const planet = await collection.find({homeworld : id}).toArray();
+        res.json(planet);
+    } catch (err) {
+        console.error("Error:", err);
+        res.status(500).send(`Could not find any characters in film ${id}.`);
+    }
+});
+
 app.get('/api/characters/:id/films', async (req, res) => {
     const id = parseInt(req.params.id);
     try {
