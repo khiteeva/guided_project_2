@@ -11,24 +11,21 @@ function CharacterList(){
                     throw new Error('Data could not be fetched!');
                 }
                 const json_response = await response.json();
-                console.log(json_response);
                 setCharList(json_response); // assign JSON response to the data variable.
-                console.log(`printing after fetch ${CharList}`);
             } catch (error) {
                 console.error('Error fetching characters:', error);
             }
         };
 
         fetchData();
-        //console.log(`printing after fetch ${CharList}`);
     }, []);
 
     return (
         <>
             {
-                CharList.map((char) => {
-                    <div>{char.name}</div>
-                })
+                CharList.map((char) => 
+                    <div key={char.id}>{char.name}</div>
+                )
             }
         </>
     )
