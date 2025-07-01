@@ -148,8 +148,10 @@ app.get('/api/characters/:id/planet', async (req, res) => {
     try {
         const client = await MongoClient.connect(url);
         const db = client.db(dbName);
-        const collection = db.collection(characters);
-        const planet = await collection.find({homeworld : id}).toArray();
+        const character_collection = db.collection(characters);
+        const planet_id = await character_collection.find({id: id}).toArray();
+        const collection = db.collection(planets);
+        const planet = await collection.find({id : planet_id[0].homeworld}).toArray();
         res.json(planet);
     } catch (err) {
         console.error("Error:", err);
