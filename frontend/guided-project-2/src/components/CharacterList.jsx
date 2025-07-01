@@ -34,7 +34,7 @@ function CharacterList() {
                 {
                     CharList.map((char) => (
 
-                        <button key={char.id}><Link to={`/Character/${char.id}`}>{char.name}</Link></button>
+                        <button key={char.id}><Link to={`/characters/${char.id}`}>{char.name}</Link></button>
                     )
 
                     )
