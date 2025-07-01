@@ -113,7 +113,7 @@ app.get('/api/films/:id/characters', async (req, res) => {
         let character_array = [];
         for(let element in character_ids){
             let character_info = await character_collection.find({id : parseInt(character_ids[element].character_id)}).toArray();
-            character_array = [...character_array, character_info];
+            character_array = [...character_array, character_info[0]];
         }
         res.json(character_array);
     } catch (err) {
@@ -134,7 +134,7 @@ app.get('/api/films/:id/planets', async (req, res) => {
         let planet_array = [];
         for(let element in planet_ids){
             let planet_info = await planets_collection.find({id : parseInt(planet_ids[element].planet_id)}).toArray();
-            planet_array = [...planet_array, planet_info];
+            planet_array = [...planet_array, planet_info[0]];
         }
         res.json(planet_array);
     } catch (err) {
