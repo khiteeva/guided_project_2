@@ -13,6 +13,7 @@ const planets = process.env.MONGO_DB_PLANETS;
 const characters = process.env.MONGO_DB_CHARACTERS;
 
 const app = express();
+app.use(express.static('./public'))
 app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
